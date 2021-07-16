@@ -1,0 +1,31 @@
+.example-section{
+  display: flex;
+  align-content: center;
+  align-items: center;
+  height: 60px;
+}
+::ng-deep .mat-focused .mat-form-field-label .mat-form-field-underline .mat-form-field-ripple{
+  background-color: white;
+}
+::ng-deep .mat-horizontal-content-container{
+  margin-top: 1%;
+}
+::ng-deep .mat-horizontal-stepper-header-container{
+  background-color: #34495e;
+  color: white;
+}
+::ng-deep .mat-step-text-label{
+  color: white;
+}
+::ng-deep .mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit{
+  background-color: #d35400;
+  color: white;
+}
+.form_button{
+  background-color: #d35400;
+  color: white;
+}
+.back_button{
+  background-color: #a4b0be;
+  color:white;
+}
