@@ -21,6 +21,9 @@
   background-color: #d35400;
   color: white;
 }
+::ng-deep .input:-internal-autofill-selected{
+  background-color: white !important;
+}
 .form_button{
   background-color: #d35400;
   color: white;
