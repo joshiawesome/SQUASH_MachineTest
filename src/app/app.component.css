@@ -32,6 +32,9 @@
 .img_upload{
   margin-left: 20%;
 }
+#redirect_button{
+  opacity: 0.5;
+}
 @media only screen and (max-width:768px){
   .img_upload{
     margin-left: 0%;

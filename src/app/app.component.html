@@ -159,13 +159,13 @@
 
             <!--OTP entry-->
             <p>
-              <ng-otp-input (onInputChange)="userSelect('OTP',$event)" [config]="{length:5}"></ng-otp-input>
+              <ng-otp-input (onInputChange)="userSelect('OTP',$event)" [config]="{length:5}" ></ng-otp-input>
             </p>
 
 
             <div>
               <button mat-button matStepperPrevious>Back</button>
-              <button mat-button class="form_button" (click)="redirect()">Verify</button>
+              <button mat-button id="redirect_button" class="form_button" (click)="redirect()">Verify</button>
             </div>
 
             <p>

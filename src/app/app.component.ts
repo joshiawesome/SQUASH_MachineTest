@@ -49,6 +49,7 @@ export class AppComponent implements OnInit{
   email_id;
   job_title;
   experience;
+  OTP;
 
   form_data=[
     {"Full Name":"null",
@@ -121,7 +122,11 @@ export class AppComponent implements OnInit{
       this.form_data[0]["State"]=val;
     }
     if(id=="OTP"){
+      this.OTP=val;
       this.form_data[0]["OTP"]=val;
+      if(this.OTP.length==5){
+        this.document.getElementById("redirect_button").style.opacity="1";
+      }
     }
   }
 
@@ -140,7 +145,8 @@ export class AppComponent implements OnInit{
     // console.log(this.form_data);
 
     localStorage.setItem('FormData',JSON.stringify(this.form_data));
-    // this.document.location.href='https://squashapps.com/';
+
+    this.document.location.href='https://squashapps.com/';
   }
 
 }
