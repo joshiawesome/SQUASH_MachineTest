@@ -33,7 +33,31 @@ export class AppComponent implements OnInit{
   isLinear=true;
   isEditable = false;
 
-  url="./assets/upload_logo.png"
+  url="./assets/upload_logo.png";
+
+  full_name;
+  gender;
+  country;
+  state;
+  phone_number;
+  company_name;
+  email_id;
+  job_title;
+  experience;
+
+  form_data=[
+    {"Full Name":"null",
+    "Gender":"null",
+    "Country":"null",
+    "State":"null",
+    "Phone Number":"null",
+    "Company Logo":"null",
+    "Company Name":"null",
+    "Email id":"null",
+    "Job Title":"null",
+    "Years of Experience":"null",
+    "OTP":"null"},
+  ];
 
   constructor(private _formBuilder: FormBuilder,@Inject(DOCUMENT) private document:Document) {}
 
@@ -45,7 +69,7 @@ export class AppComponent implements OnInit{
       country_validation: ['', Validators.required],
       state_validation: ['', Validators.required],
       gender_validation:['',Validators.required],
-      phone_validation: new FormControl(undefined,[Validators.required])
+      phone_validation: [undefined,[Validators.required]]
     });
 
     //validation for the second step
@@ -69,14 +93,45 @@ export class AppComponent implements OnInit{
       reader.readAsDataURL(event.target.files[0]);
       reader.onload=(e:any)=>{
         this.url=e.target.result;
+        this.form_data[0]["Company Logo"]=this.url;
       }
 
     }
 
   }
 
+  userSelect(id,val){
+    console.log(id,val);
+    if(id=="gender"){
+      this.form_data[0]["Gender"]=val;
+    }
+    if(id=="country"){
+      this.form_data[0]["Country"]=val;
+    }
+    if(id=="state"){
+      this.form_data[0]["State"]=val;
+    }
+    if(id=="OTP"){
+      this.form_data[0]["OTP"]=val;
+    }
+  }
+
   redirect():void{
-    this.document.location.href='https://squashapps.com/';
+
+    this.phone_number=this.firstFormGroup.controls['phone_validation'].value;
+    // console.log(this.phone_number);
+  
+    this.form_data[0]["Phone Number"]=this.phone_number;
+    this.form_data[0]["Full Name"]=this.full_name;
+    this.form_data[0]["Company Name"]=this.company_name;
+    this.form_data[0]["Email id"]=this.email_id;
+    this.form_data[0]["Job Title"]=this.job_title;
+    this.form_data[0]["Years of Experience"]=this.experience;
+
+    // console.log(this.form_data);
+
+    localStorage.setItem('FormData',JSON.stringify(this.form_data));
+    // this.document.location.href='https://squashapps.com/';
   }
 
 }

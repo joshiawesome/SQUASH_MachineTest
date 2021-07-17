@@ -19,7 +19,7 @@
               <p>
                 <mat-form-field appearance="outline">
                   <mat-label>Full Name</mat-label>
-                  <input matInput formControlName="name_validation" placeholder="eg. Mr.Srijith Radhakrishnan" required>
+                  <input matInput formControlName="name_validation" placeholder="eg. Mr.Srijith Radhakrishnan" [(ngModel)]="full_name" required>
                 </mat-form-field>
               </p>
 
@@ -27,7 +27,7 @@
               <p>
                   <mat-form-field appearance="outline">
                     <mat-label>Gender</mat-label>
-                    <mat-select formControlName="gender_validation" required>
+                    <mat-select formControlName="gender_validation" (selectionChange)="userSelect('gender',$event.value);" required>
                       <mat-option *ngFor="let g of gender_list" [value]="g">{{g}}</mat-option>
                     </mat-select>
                   </mat-form-field>
@@ -37,7 +37,7 @@
               <p>
                 <mat-form-field appearance="outline">
                   <mat-label>Country</mat-label>
-                  <mat-select formControlName="country_validation" required>
+                  <mat-select formControlName="country_validation" (selectionChange)="userSelect('country',$event.value);" required>
                     <mat-option *ngFor="let c of country_list" [value]="c">{{c}}</mat-option>
                   </mat-select>
                 </mat-form-field>
@@ -47,7 +47,7 @@
               <p>
                 <mat-form-field appearance="outline">
                   <mat-label>State</mat-label>
-                  <mat-select formControlName="state_validation" required>
+                  <mat-select formControlName="state_validation" (selectionChange)="userSelect('state',$event.value);" required>
                     <mat-option *ngFor="let s of state_list" [value]="s">{{s}}</mat-option>
                   </mat-select>
                 </mat-form-field>
@@ -98,7 +98,7 @@
               <p>
                 <mat-form-field appearance="outline">
                   <mat-label>Company Name</mat-label>
-                  <input matInput placeholder="eg. Squash Apps Private Ltd." formControlName="companyname_validation" required>
+                  <input matInput placeholder="eg. Squash Apps Private Ltd." formControlName="companyname_validation" [(ngModel)]="company_name" required>
                 </mat-form-field>  
               </p>
               
@@ -108,7 +108,7 @@
                   <mat-label>Email id</mat-label>
                   <input matInput [formControl]="secondFormGroup.controls.email_validation"
                   [errorStateMatcher]="matcher" 
-                  placeholder="eg. srijith@squashapps.com">
+                  placeholder="eg. srijith@squashapps.com" [(ngModel)]="email_id">
                   <mat-error *ngIf="secondFormGroup.controls.email_validation.hasError('email') && !secondFormGroup.controls.email_validation.hasError('required')">
                     Please enter a valid email address
                   </mat-error>
@@ -122,7 +122,7 @@
                <p>
                 <mat-form-field appearance="outline">
                   <mat-label>Job Title</mat-label>
-                  <input matInput placeholder="eg. User Experience Designer" formControlName="jobtitle_validation" required>
+                  <input matInput placeholder="eg. User Experience Designer" formControlName="jobtitle_validation" [(ngModel)]="job_title" required>
                 </mat-form-field>  
               </p>
 
@@ -130,7 +130,7 @@
                <p>
                 <mat-form-field appearance="outline">
                   <mat-label>Years of Experience</mat-label>
-                  <input matInput placeholder="eg. 1" formControlName="experience_validation" required>
+                  <input matInput placeholder="eg. 1" formControlName="experience_validation" [(ngModel)]="experience" required>
                 </mat-form-field>  
               </p>
 
@@ -159,7 +159,7 @@
 
             <!--OTP entry-->
             <p>
-              <ng-otp-input [config]="{length:5}"></ng-otp-input>
+              <ng-otp-input (onInputChange)="userSelect('OTP',$event)" [config]="{length:5}"></ng-otp-input>
             </p>
 
 
