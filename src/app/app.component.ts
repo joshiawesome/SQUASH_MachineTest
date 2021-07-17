@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 import {FormBuilder, FormControl, FormGroup, Validators, FormGroupDirective, NgForm,} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
 
@@ -34,7 +35,7 @@ export class AppComponent implements OnInit{
 
   url="./assets/upload_logo.png"
 
-  constructor(private _formBuilder: FormBuilder) {}
+  constructor(private _formBuilder: FormBuilder,@Inject(DOCUMENT) private document:Document) {}
 
   ngOnInit() {
 
@@ -72,6 +73,10 @@ export class AppComponent implements OnInit{
 
     }
 
+  }
+
+  redirect():void{
+    this.document.location.href='https://squashapps.com/';
   }
 
 }
