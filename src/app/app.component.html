@@ -87,10 +87,11 @@
 
               <!--company logo-->
               <p>
-                <label for="file-input">
+                <label class="img_upload" for="file-input" style="cursor: pointer;">
                   <img [src]="url" height="70">
                 </label>
-                <input id="file-input" type="file">   
+                &nbsp;<span style="color: #d35400;">Upload your company logo</span>
+                <input id="file-input" style="opacity: 0;" type="file" (change)="selectfile($event)">   
               </p>
 
               <!--company name-->

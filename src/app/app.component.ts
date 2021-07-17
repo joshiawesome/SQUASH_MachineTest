@@ -61,4 +61,17 @@ export class AppComponent implements OnInit{
 
   }
 
+  selectfile(event){
+
+    if(event.target.files){
+      var reader=new FileReader();
+      reader.readAsDataURL(event.target.files[0]);
+      reader.onload=(e:any)=>{
+        this.url=e.target.result;
+      }
+
+    }
+
+  }
+
 }

@@ -29,3 +29,11 @@
   background-color: #a4b0be;
   color:white;
 }
+.img_upload{
+  margin-left: 20%;
+}
+@media only screen and (max-width:768px){
+  .img_upload{
+    margin-left: 0%;
+  }
+}
