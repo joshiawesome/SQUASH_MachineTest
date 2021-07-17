@@ -4,10 +4,10 @@
     <div class="card shadow bg-white rounded">
       <div class="card-body">
 
-        <mat-horizontal-stepper [linear]="isLinear">
+        <mat-horizontal-stepper #stepper [linear]="isLinear">
 
           <!--STEP ONE : Personal Details-->
-          <mat-step [stepControl]="firstFormGroup" [editable]="isEditable">
+          <mat-step [stepControl]="firstFormGroup" errorMessage="Missing Fields">
 
             <h2>Add your personal details</h2>
 
@@ -77,7 +77,7 @@
           <!--STEP ONE : Personal Details-->
 
           <!--STEP TWO : Company Details-->
-          <mat-step [stepControl]="secondFormGroup" [editable]="isEditable">
+          <mat-step [stepControl]="secondFormGroup" errorMessage="Missing Fields">
 
             <h2>Add your Company details</h2>
 
@@ -150,7 +150,7 @@
           <!--STEP TWO : Company Details-->
 
           <!--STEP THREE : Email Verification-->
-          <mat-step>
+          <mat-step errorMessage="Missing Fields">
 
             <h2>Enter your OTP</h2>
             <h4>For your security, we need to verify your identity. We sent a 5-digit<br/>code to name@domain.com. Please enter it below.</h4>

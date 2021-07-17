@@ -1,5 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
+import { MatStepper } from '@angular/material/stepper';
+import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 import {FormBuilder, FormControl, FormGroup, Validators, FormGroupDirective, NgForm,} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
 
@@ -13,7 +15,10 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  providers:[{
+    provide:STEPPER_GLOBAL_OPTIONS, useValue: {showError:true}
+  }]
 })
 export class AppComponent implements OnInit{
   title = 'RegistrationForm';
@@ -26,8 +31,8 @@ export class AppComponent implements OnInit{
 
   gender_list: string[]=['male','female','other'];
 
-  firstFormGroup;
-  secondFormGroup;
+  firstFormGroup : FormGroup;
+  secondFormGroup : FormGroup;
   matcher = new MyErrorStateMatcher();
   
   isLinear=true;
@@ -84,6 +89,10 @@ export class AppComponent implements OnInit{
       agreement_validation: ['', Validators.required],
     });
 
+  }
+
+  goBack(stepper: MatStepper){
+    stepper.previous();
   }
 
   selectfile(event){
